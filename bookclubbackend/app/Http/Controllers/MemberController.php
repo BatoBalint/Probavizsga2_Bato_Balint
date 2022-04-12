@@ -25,7 +25,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $member = new Member();
+
+        $member->fill($request->only([
+            'name',
+            'gender',
+            'birth_date',
+            'banned'
+        ]));
     }
 
     /**
