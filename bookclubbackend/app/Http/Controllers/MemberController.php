@@ -33,6 +33,9 @@ class MemberController extends Controller
             'birth_date',
             'banned'
         ]));
+        $member->save();
+
+        return response()->json($member, 201);
     }
 
     /**
@@ -43,7 +46,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return response()->json($member, 200)
     }
 
     /**
@@ -55,7 +58,17 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $member = new Member();
+
+        $member->fill($request->only([
+            'name',
+            'gender',
+            'birth_date',
+            'banned'
+        ]));
+        $member->save();
+
+        return response()->json($member, 200);
     }
 
     /**
@@ -66,6 +79,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return response()->json(1, 200);
     }
 }
