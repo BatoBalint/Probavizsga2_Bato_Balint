@@ -37,7 +37,7 @@
     },
     methods: {
       getData() {
-        fetch('http://localhost:8000/api/member')
+        fetch('http://localhost:8000/api/members')
         .then(response => response.json())
         .then(data => this.members = data);
       }

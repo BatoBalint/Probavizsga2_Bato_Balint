@@ -54,7 +54,7 @@
             }
         },
         sendData(member) {
-            fetch('http://localhost:8000/api/member', {
+            fetch('http://localhost:8000/api/members', {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
