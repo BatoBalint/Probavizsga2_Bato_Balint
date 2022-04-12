@@ -26,13 +26,21 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $member = new Member();
-
-        $member->fill($request->only([
-            'name',
-            'gender',
-            'birth_date',
-            'banned'
-        ]));
+        $gender = $request->get('gender');
+        if ($gender != 'M' || $gender != 'F') {
+            $member->fill($request->only([
+                'name',
+                'birth_date',
+                'banned'
+            ]));
+        } else {
+            $member->fill($request->only([
+                'name',
+                'gender',
+                'birth_date',
+                'banned'
+            ]));
+        }
         $member->save();
 
         return response()->json($member, 201);

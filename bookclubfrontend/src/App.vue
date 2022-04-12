@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="row my-5">
-    <h1>Members</h1>
+    <h1>Tagok</h1>
   </div>
   <div class="row">
     <div v-for="member in members" :key="member.id" class="col-sm-12 col-md-6 col-lg-4 my-5">
@@ -11,14 +11,15 @@
         <img v-else src="./assets/other.png" class="card-img-top" alt="unidentified gender image">
         <div class="card-body">
           <h5 class="card-title">{{ member.name }}</h5>
-          <p class="card-text">Text</p>
+          <p class="card-text">Született: {{ member.birth_date }}</p>
+          <p class="card-text">Csatlakozott: {{ member.created_at.split('.')[0].replace('T', ' ') }}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="row my-5">
-    <h2>New member</h2>
-    <Form />
+    <h2>Új tag</h2>
+    <Form @formSent="getData" />
   </div>
 </div>
 </template>
