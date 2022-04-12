@@ -58,8 +58,6 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        $member = new Member();
-
         $member->fill($request->only([
             'name',
             'gender',
